@@ -1,24 +1,16 @@
 # Phase 2 Project Submission
 
-Students names: Angella Bor | Jackline Njuguna | Vitelis Siocha | Mwenda Mugambi
-Student pace: Part time
+![King County House Sales](https://github.com/angibor/dsc-phase-2-project-v2-3/assets/137016696/a6703f85-f879-4022-8651-33f10d6830ee)
 
 ## Project Overview
 
 We conducted a comprehensive analysis of house sales data in a northwestern county using multiple linear regression modeling. Our goal was to gain insights into the factors that affect house prices and develop a predictive model that can estimate the value of homes based on various features.
 
-## Deliverables
+## Business Problem
 
-There are three deliverables in this project:
+Weichert Realtors needs to provide valuable advice to homeowners regarding how home renovations may impact the estimated value of their homes and by what amount.
 
-* A **non-technical presentation**
-* A **Jupyter Notebook**
-* A **GitHub repository**
-
-### Business Problem
-
-. Weichert Realtors needs to provide valuable advice to homeowners regarding how home renovations may impact the estimated value of their homes and by what amount.
-. By addressing this problem, Weichert Realtors can offer valuable guidance to homeowners, strengthen their relationships with clients, and potentially increase their     
+By addressing this problem, Weichert Realtors can offer valuable guidance to homeowners, strengthen their relationships with clients, and potentially increase their     
 business.
 
 Questions to answer:
@@ -27,122 +19,132 @@ Questions to answer:
 2. Is there a correlation between quantitative features and the selling price of a house?
 3. What suggestions can be made to property investors seeking to optimize their returns from commercial real estate investments?
 
-### Data Exploration
+## Data Understanding
+This analysis/modelling uses the King County House Sales dataset, which can be found in kc_house_data.csv in the data folder in this assignment's GitHub repository. The description of the column names can be found below;
 
- . In this section we went through the data sets we have to understand the structure and determine the ones we'll be using for this project.
- 1. We started by importing the libraries and the datasets that will be necessary for the process.
- 2. We imported the data set "data/kc_house_data.csv"
- 3. Checked the shape of our data using data.shape
- 4. Getting a quick overview of our data data.info()
+* id - Unique identifier for a house
+* date - Date house was sold
+* price - Sale price (prediction target)
+* bedrooms - Number of bedrooms
+* bathrooms - Number of bathrooms
+* sqft_living - Square footage of living space in the home
+* sqft_lot - Square footage of the lot
+* floors - Number of floors (levels) in house
+* waterfront - Whether the house is on a waterfront
+* view - Quality of view from house
+* condition - How good the overall condition of the house is. Related to maintenance of house.
+* grade - Overall grade of the house. Related to the construction and design of the house.
+* sqft_above - Square footage of house apart from basement
+* sqft_basement - Square footage of the basement
+* yr_built - Year when house was built
+* yr_renovated - Year when house was renovated
+* zipcode - ZIP Code used by the United States Postal Service
+* lat - Latitude coordinate
+* long - Longitude coordinate
+* sqft_living15 - The square footage of interior housing living space for the nearest 15 neighbors
+* sqft_lot15 - The square footage of the land lots of the nearest 15 neighbors
 
-. From the output, we can see that several columns have missing values, such as 'waterfront', 'view' and 'yr_renovated'. We also noticed 'sqft_basement' datatype is not an object as expected.
-
-## Data Processing
-1. We addressed Dtypes issue in "sqft_basement" by replacing the "?" with the mode using the .replace function.
-2. We also filled the missing values
-
-. The next step was getting a quick overview of the distribution and central tendency of the data to get more nsights into the dataset's characteristics and came up with the following findings;-
-i. Home prices range from 78,000 - 7,700,000
-ii. The mean house price in the dataset is approximately $540,296.
-iii. Most houses have between 3 and 4 bedrooms on average (mean of approximately 3.37)
-iv. There is also a maximum of 33 bedrooms-(This could be an outlier or a data entry error.)
-v. The average number of bathrooms is approximately 2.12, with a range from 0.5 to 8 bathrooms per house.
-vi. The houses in the dataset were built over a wide time span, with a mean construction year of around 1971, suggesting both older and newer properties.
-vii. Most houses have 1.494 floors on average, with a minimum of 1 floor and a maximum of 3.5 floors.
+More insights on the dataset;-
+* Home prices range from 78,000 - 7,700,000
+* The mean house price in the dataset is approximately $540,296.
+* Most houses have between 3 and 4 bedrooms on average (mean of approximately 3.37)
+* There is also a maximum of 33 bedrooms-(This could be an outlier or a data entry error.)
+* The average number of bathrooms is approximately 2.12, with a range from 0.5 to 8 bathrooms per house.
+* Most houses have 1.494 floors on average, with a minimum of 1 floor and a maximum of 3.5 floors.
 
 NB: We confirmed that the 33 bedrooms is an outlier, using a boxplot.
+![image](https://github.com/angibor/dsc-phase-2-project-v2-3/assets/137016696/3d19ce17-9406-4be8-b7d1-63d2e8119c15)
 
-* Overview
-* Business and Data Understanding
-  * Explain your stakeholder audience here
-* **Modeling**
-* **Regression Results**
-## EXPLORATORY DATA ANALYSIS
+## Exploratory Data Analysis
 1. We checked how the house price relate with continuous features by checking the following relationships.
    
-a. Relationship Between Price and Number of Bathrooms
-b. Relationship Between Price and Square footage of living space in the home
-c. Relationship Between Price and Square footage of house apart from basement
-d. Relationship Between Price vs Square footage of the basement
-e. Relationship Between Price vs Number of floors (levels) in house
-f. Relationship Between Price vs Square footage of the lot
+* Relationship Between Price and Number of Bathrooms
+* Relationship Between Price and Square footage of living space in the home
+* Relationship Between Price and Square footage of house apart from basement
+* Relationship Between Price vs Square footage of the basement
+* Relationship Between Price vs Number of floors (levels) in house
+* Relationship Between Price vs Square footage of the lot
 
 2. We also checked how the house price relate with qualitative features.
 
-a. Relationship house views condition and price
-b. Relationship Between House condition and price
-c. Relationship Between house with waterfronts and price
+* Relationship house views condition and price
+* Relationship Between House condition and price
+* Relationship Between house with waterfronts and price
 
-## MODELING
+## Modeling and Regression Results
 1. Correlation of other features/variables with House Price
-a. We calculated the correlation matrix
-b. We got the correlation of 'price' with all other columns
+* We calculated the correlation matrix
+* We got the correlation of 'price' with all other columns
+
+![image](https://github.com/angibor/dsc-phase-2-project-v2-3/assets/137016696/2f20b3b5-5521-462b-9c0c-9121944101b1)
 
 2. We checked the most correlated column feature with price?
 
 3. We also checked What is the most correlated feature with other features excluding price.
 
-## Findings 
+#### Findings 
 The most collerated feature with other features excluding price is 'sqft_living'. Since 'sqft_living' has two most auto-correlation with other features after price, we will drop it to avoid multicollinearity issues when modelling.
 
-## 1. Base Model
-## 1. Baseline Model
-We have found our most correlated column with price is 'grade', therefore we built our Baseline model with this column. Our baseline model is a simple linear regression that take the equation;
-Y= aX+b
+### 1. Baseline Model
 
-In this equation:
-Y is the dependent variable ('price').
-
-X is the independent variable ('grade').
-
-a is the slope of the regression line, representing the change in Y for a one-unit change in X. It is also known as the regression coefficient or the coefficient of the independent variable.
-
-b is the y-intercept, representing the value of Y when X is zero.
-
-## We set up variable, fitting linear regression model and viewing the model results by;-
-a. Declaring Variables
-b. Fitting model
-
-## Summary findings and interpretation
+#### Baseline Model Result
 The linear regression model fitted above uses the 'grade' as the independent variable to predict the 'price' of houses. The R-squared value of 0.446 indicates that approximately 44.6% of the variance in house prices can be explained by the 'grade.' The coefficient for 'grade' is 209,200, suggesting that, on average, a one-unit increase in the 'grade' results in an increase of $209,200 in the house price. The constant term of -1,062,000 represents the estimated price when 'grade' is zero. The p-values are close to zero, indicating that the 'grade' is statistically significant in predicting house prices. The model fits the data well, although there might be some multicollinearity concerns, given the high coefficient value for 'grade.'
 
-## 2. Multiple Linear Regression Model
-The four assumptions kept for multiple Linear Regression Models below include:
+#### Baseline model predictive results.
+![image](https://github.com/angibor/dsc-phase-2-project-v2-3/assets/137016696/143c0d5c-6337-4e02-b471-944dcc1b642c)
 
-i. No multicollinearity
-ii. Linear relationship between explanatory and response variables
-iii. Homoscedasticity of error terms
-iv. Normal distribution of model residuals
+### 2. Multiple Linear Regression Models
 
-## a. Using Continuous data and Categorical features to build multiple regression models we did the following;-
-i. Model Continuous features and grade column
-ii. Model Continuous features and house condition feature
+### a. Using Continuous data and Categorical features to build multiple regression models we did the following;-
+
+### i. Model Continuous features and grade column
+#### Regression Results
+The multiple linear regression model, including continuous variables (bedrooms, bathrooms, sqft_lot, sqft_basement, sqft_above, floors) and one categorical variable (grade), shows improved performance compared to the baseline. The R-squared value is 0.550, indicating that approximately 55% of the variance in price is explained by the model. Bedrooms, bathrooms, sqft_lot, sqft_basement, sqft_above, and the grade variable are statistically significant predictors of price, with associated coefficients showing their impact. However, multicollinearity may be a concern due to a high condition number.
+
+### ii. Model Continuous features and house condition feature
+#### Regression Results
 This second model, which includes the categorical variable condition along with continuous variables, shows an R-squared of 0.511, indicating 51.1% of price variance explained. All predictors are statistically significant. This model performs similarly to the previous one, suggesting condition may be a valuable predictor alongside the other features. THis model performs better than the baseline model.
 
-## b. Model using only categorical features
+### b. Model using only categorical features
+#### Regression Results
 The third model, using only categorical features (condition, waterfront, grade, view), has an R-squared of 0.525, explaining 52.5% of price variance. All categorical predictors are statistically significant below the chosen p_value of 0.05. This model simplifies the model significantly and performs competitively, suggesting that categorical features alone can provide valuable predictive power.
 
-## c. Model using only continuous variables
+### c. Model using only continuous variables
+#### Regression Results
 The fourth model, utilizing only continuous variables, demonstrates an R-squared value of 0.584, indicating that 58.4% of the variance in price is explained. All continuous variables are statistically significant predictors of price. This model outperforms the previous models, suggesting that using only continuous features provides a strong predictive power for price. However, multicollinearity is a potential issue.
 
-## d. Model using specific continuous variables
-The fifth model, using specific continuous variables (bedrooms, bathrooms, sqft_lot, sqft_basement, sqft_above, floors), exhibits an R-squared value of 0.843, indicating a high explanatory power of 84.3%. All selected continuous variables are statistically significant. The model performs exceptionally well, but the absence of a constant term may affect its generalizability. Thus, we consider evaluating its performance on a validation dataset to ensure its validity given that this is the only model that has strongly fitted the data with high explanatory power of more than eighty percent. However.
+### d. Model using specific continuous variables
+#### Regression Results
+The fifth model, using specific continuous variables (bedrooms, bathrooms, sqft_lot, sqft_basement, sqft_above, floors), exhibits an R-squared value of 0.843, indicating a high explanatory power of 84.3%. All selected continuous variables are statistically significant. The model performs exceptionally well, but the absence of a constant term may affect its generalizability. Thus, we consider evaluating its performance on a validation dataset to ensure its validity given that this is the only model that has strongly fitted the data with high explanatory power of more than eighty percent. 
 
-## We now checked the Performance of the fifth model.
-We first split the data into training and validation sets using train_test_split. Then, we train the model using the training data. Finally, we make predictions on the validation set and evaluate the model's performance.
+#### Predictive results of the fifth model.
+![image](https://github.com/angibor/dsc-phase-2-project-v2-3/assets/137016696/6675213f-4732-45f0-8f2f-3514b77a5417)
 
-The fifth model, using specific continuous variables, achieves an impressive R-squared value of 0.844 on the validation set. This indicates that approximately 84.4% of the variance in housing prices is explained by the model. The chosen features (bedrooms, bathrooms, sqft_lot, sqft_basement, sqft_above, floors) are highly influential in predicting prices.
+## Conclusions and Recommendations
+#### Conclusions
+Qualitative Aspects: Qualitative aspects like the property's condition, grade, and view play a crucial role in determining home prices. Renovations that improve these aspects can lead to substantial increases in estimated property values.
 
-## Conclusion
-Significant Predictors: The regression models revealed that certain features strongly influence house prices. These include the number of bedrooms, bathrooms, square footage, condition, grade, and view. However, number of bedrooms, bathrooms, Square footage of the lot, Square footage of the basement, Square footage of house apart from basement and Number of floors (levels) in house seemed to be the best in explaining the house prices.
+Quantitative Features: Quantitative features such as the number of bedrooms, bathrooms, and total square footage are strongly correlated with home prices.
 
-High Predictive Power: The best-performing model, using specific continuous variables mentioned above, achieved an R-squared value of 0.844, indicating that approximately 84.4% of the variance in housing prices can be explained by the model.
+Significant Predictors: The regression models revealed that certain features strongly influence house prices. These include the number of bedrooms, bathrooms, square footage, condition, grade, and view. However, number of bedrooms, bathrooms, square footage of the lot, square footage of the basement, square footage of house apart from basement and Number of floors (levels) in house seemed to be the best in explaining the house prices.
 
-## Recommendations:
+#### Recommendations:
 Based on the analysis, several recommendations can be made to assist homeowners and Weichert Realtors:
 
-a. Renovations Impact on Price: Emphasize the importance of specific renovations, such as increasing number of bedrooms, bathrooms, Square footage of the lot, Square footage of the basement, Square footage of house apart from basement and Number of floors (levels) in house
+Client Guidance: Weichert Realtors should provide clients with personalized guidance on home renovations and improvements. Explain how enhancing qualitative aspects like condition, grade and view can boost property values, and suggest specific renovations aligned with their goals.
 
-b. Maximizing ROI: Advise homeowners on renovations that are likely to yield the highest return on investment.
+Educational Resources: Develop educational resources and materials emphasizing the importance of specific renovations, such as increasing number of bedrooms, bathrooms, square footage of the lot, square footage of the basement, square footage of house apart from basement and Number of floors in house. Optimizing these features can lead to higher estimated home values.
 
-c. Consider Square Footage: Highlight the significance of square footage in determining the value of a property.
+Maximizing ROI with the right Renovation Strategies: Emphasize on the importance of quality. Ensure customers understand that renovations should be done to a high standard of quality. Quality renovations not only increase property value but also attract potential buyers or renters.
+
+Marketing Strategies: Highlight unique property features, such as waterfront views or exceptional grades, in marketing materials. Showcasing these features contribute to higher property values.
+
+Further Data Exploration: Exploring additional variables, such as location-related features or neighborhood characteristics, could provide deeper insights into price determinants. Proximity to schools, shopping centers, public transportation, parks, and the overall desirability of the neighborhood can greatly impact the price.
+
+Risk Management: It's essential to acknowledge the potential for multicollinearity in the data, which can affect model accuracy. We recommend further research to mitigate this issue and ensure reliable predictions.
+
+Advanced Modeling: Continue to invest in advanced modeling techniques and data analysis to refine pricing strategies and enhance predictive accuracy by taking into consideration the Market trends, Seasonal Variations and Economic Factors . This will ensure that clients receive the most accurate and up-to-date information.
+
+Client Feedback: Encourage clients to provide feedback on their experiences and preferences. Use this feedback to further tailor services and recommendations to meet their individual needs.
+
+By leveraging these insights and recommendations, Weichert Realtors can offer valuable guidance to homeowners, strengthen client relationships, and potentially increase business in the northwestern county real estate market.
