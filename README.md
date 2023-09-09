@@ -1,27 +1,23 @@
-# Phase 2 Project Description
+# Phase 2 Project Submission
 
-Another module down - you're almost half way there!
-
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-2-project-v2-3/main/halfway-there.gif)
-
-All that remains in Phase 2 is to put your newfound data science skills to use with a large project!
-
-In this project description, we will cover:
-
-* Project Overview: the project goal, audience, and dataset
-* Deliverables: the specific items you are required to produce for this project
-* Grading: how your project will be scored
-* Getting Started: guidance for how to begin working
+Students names: Angella Bor | Jackline Njuguna | Vitelis Siocha | Mwenda Mugambi
+Student pace: Part time
 
 ## Project Overview
 
-For this project, you will use multiple linear regression modeling to analyze house sales in a northwestern county.
+We conducted a comprehensive analysis of house sales data in a northwestern county using multiple linear regression modeling. Our goal was to gain insights into the factors that affect house prices and develop a predictive model that can estimate the value of homes based on various features.
 
 ### Business Problem
 
-It is up to you to define a stakeholder and business problem appropriate to this dataset.
+. Weichert Realtors needs to provide valuable advice to homeowners regarding how home renovations may impact the estimated value of their homes and by what amount.
+. By addressing this problem, Weichert Realtors can offer valuable guidance to homeowners, strengthen their relationships with clients, and potentially increase their     
+business.
 
-If you are struggling to define a stakeholder, we recommend you complete a project for a real estate agency that helps homeowners buy and/or sell homes. A business problem you could focus on for this stakeholder is the need to provide advice to homeowners about how home renovations might increase the estimated value of their homes, and by what amount.
+Questions to answer:
+
+1. What influence does the qualitative aspects of a house have on its sale price?
+2. Is there a correlation between quantitative features and the selling price of a house?
+3. What suggestions can be made to property investors seeking to optimize their returns from commercial real estate investments?
 
 ### The Data
 
