@@ -71,7 +71,6 @@ NB: We confirmed that the 33 bedrooms is an outlier, using a boxplot.
 * Relationship Between House condition and price
 * Relationship Between house with waterfronts and price
 
-## Modeling and Regression Results
 1. Correlation of other features/variables with House Price
 * We calculated the correlation matrix
 * We got the correlation of 'price' with all other columns
@@ -85,6 +84,8 @@ NB: We confirmed that the 33 bedrooms is an outlier, using a boxplot.
 #### Findings 
 The most collerated feature with other features excluding price is 'sqft_living'. Since 'sqft_living' has two most auto-correlation with other features after price, we will drop it to avoid multicollinearity issues when modelling.
 
+## Modeling and Regression Results
+
 ### 1. Baseline Model
 
 #### Baseline Model Result
@@ -95,13 +96,13 @@ The linear regression model fitted above uses the 'grade' as the independent var
 
 ### 2. Multiple Linear Regression Models
 
-### a. Using Continuous data and Categorical features to build multiple regression models we did the following;-
+#### a. Using Continuous data and Categorical features to build multiple regression models we did the following;-
 
-### i. Model Continuous features and grade column
+#### i. Model Continuous features and grade column
 #### Regression Results
 The multiple linear regression model, including continuous variables (bedrooms, bathrooms, sqft_lot, sqft_basement, sqft_above, floors) and one categorical variable (grade), shows improved performance compared to the baseline. The R-squared value is 0.550, indicating that approximately 55% of the variance in price is explained by the model. Bedrooms, bathrooms, sqft_lot, sqft_basement, sqft_above, and the grade variable are statistically significant predictors of price, with associated coefficients showing their impact. However, multicollinearity may be a concern due to a high condition number.
 
-### ii. Model Continuous features and house condition feature
+#### ii. Model Continuous features and house condition feature
 #### Regression Results
 This second model, which includes the categorical variable condition along with continuous variables, shows an R-squared of 0.511, indicating 51.1% of price variance explained. All predictors are statistically significant. This model performs similarly to the previous one, suggesting condition may be a valuable predictor alongside the other features. THis model performs better than the baseline model.
 
