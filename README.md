@@ -19,23 +19,32 @@ Questions to answer:
 2. Is there a correlation between quantitative features and the selling price of a house?
 3. What suggestions can be made to property investors seeking to optimize their returns from commercial real estate investments?
 
-### The Data
+### Data Exploration
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this assignment's GitHub repository. The description of the column names can be found in `column_names.md` in the same folder. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions about what the data means.
+ . In this section we went through the data sets we have to understand the structure and determine the ones we'll be using for this project.
+ 1. We started by importing the libraries and the datasets that will be necessary for the process.
+ 2. We imported the data set "data/kc_house_data.csv"
+ 3. Checked the shape of our data using data.shape
+ 4. Getting a quick overview of our data data.info()
 
-It is up to you to decide what data from this dataset to use and how to use it. If you are feeling overwhelmed or behind, we recommend you **ignore** some or all of the following features:
+. From the output, we can see that several columns have missing values, such as 'waterfront', 'view' and 'yr_renovated'. We also noticed 'sqft_basement' datatype is not an object as expected.
 
-* `date`
-* `view`
-* `sqft_above`
-* `sqft_basement`
-* `yr_renovated`
-* `zipcode`
-* `lat`
-* `long`
-* `sqft_living15`
-* `sqft_lot15`
+## Data Processing
+1. We addressed Dtypes issue in "sqft_basement" by replacing the "?" with the mode using the .replace function.
+2. We also filled the missing values
 
+. The next step was getting a quick overview of the distribution and central tendency of the data to get more nsights into the dataset's characteristics and came up with the following findings;-
+i. Home prices range from 78,000 - 7,700,000
+ii. The mean house price in the dataset is approximately $540,296.
+iii. Most houses have between 3 and 4 bedrooms on average (mean of approximately 3.37)
+iv. There is also a maximum of 33 bedrooms-(This could be an outlier or a data entry error.)
+v. The average number of bathrooms is approximately 2.12, with a range from 0.5 to 8 bathrooms per house.
+vi. The houses in the dataset were built over a wide time span, with a mean construction year of around 1971, suggesting both older and newer properties.
+vii. Most houses have 1.494 floors on average, with a minimum of 1 floor and a maximum of 3.5 floors.
+
+
+4. 
+1. 
 ### Key Points
 
 * **Your goal in regression modeling is to yield findings to support relevant recommendations. Those findings should include a metric describing overall model performance as well as at least two regression model coefficients.** As you explore the data and refine your stakeholder and business problem definitions, make sure you are also thinking about how a linear regression model adds value to your analysis. "The assignment was to use linear regression" is not an acceptable answer! You can also use additional statistical techniques other than linear regression, so long as you clearly explain why you are using each technique.
