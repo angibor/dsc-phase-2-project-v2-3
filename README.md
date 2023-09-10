@@ -84,7 +84,7 @@ NB: We confirmed that the 33 bedrooms is an outlier, using a boxplot.
 #### Findings 
 The most collerated feature with other features excluding price is 'sqft_living'. Since 'sqft_living' has two most auto-correlation with other features after price, we will drop it to avoid multicollinearity issues when modelling.
 
-## Modeling and Regression Results
+## Modeling and Regression Results.
 
 ### 1. Baseline Model
 
